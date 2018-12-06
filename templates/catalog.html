@@ -1,0 +1,60 @@
+{% extends "main.html" %}
+{% block content %}
+
+<div class="row">
+	<div class="col-md-1"></div>
+	<div class="col-md-2 list">
+		{% if 'email' in session %}
+		<div class="row padding-top padding-bottom">
+			<div class="col-md-11">
+				<a href="{{url_for('newCategory')}}">
+					<button class="btn btn-default" id="new-category">
+						<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Add Category
+					</button>
+				</a>
+			</div>
+			<div class="col-md-1"></div>
+		</div>
+		{% endif %}
+		<h3>All Categories</h3>
+		{% for category in categories %}
+		<a href="{{url_for('showItemsForCategory', name = category.name, cat_id = category.id)}}">
+			<div class="row">
+				<div class="col-md-1"></div>
+				<div class="col-md-10">
+					<h3>{{category.name}}</h3>
+				</div>
+				<div class="col-md-1"></div>
+			</div>
+		</a>
+		{% endfor %}
+	</div>
+	<div class="col-md-8 list">
+		{% if 'email' in session %}
+		<div class="row padding-top padding-bottom">
+			<div class="col-md-11">
+				<a href="{{url_for('newItem')}}">
+					<button class="btn btn-default" id="new-item">
+						<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Add Item
+					</button>
+				</a>
+			</div>
+			<div class="col-md-1"></div>
+		</div>
+		{% endif %}
+		<h3>Latest Items</h3>
+		{% for item in latest_items %}
+		<div>
+			<a href="{{url_for('viewItem', title = item.title, item_id = item.id)}}">
+				<div class="row">
+					<div class="col-md-1"></div>
+					<div class="col-md-10 list_item">{{item.title}}<span class="category-info">({{item.Category.name}})</span></div>
+					<div class="col-md-1"></div>
+				</div>
+			</a>
+		</div>
+		{% endfor %}
+	</div>
+	<div class="col-md-1"></div>
+</div>
+{% endblock %}

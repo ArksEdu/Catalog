@@ -1,0 +1,25 @@
+<div class="row top-menu">
+	<div class="col-md-6">
+		<a href="{{url_for('showLatestItems')}}">
+			<span class="glyphicon glyphicon-home" aria-hidden="true"></span>Catalog
+		</a>
+	</div>
+	<div class="col-md-6 text-right">
+		{%if 'email' not in session %}
+		<a href="{{url_for('showLogin')}}">Click Here to Login </a>
+		{% else %}
+		<a href="{{url_for('disconnect')}}">Logout </a>
+		{% endif %}
+	</div>
+</div>
+<div class='flash'>
+	{% with messages = get_flashed_messages() %}
+	{% if messages %}
+	<ul>
+		{% for message in messages %}
+		<li> <strong> {{ message }} </strong> </li>
+		{% endfor %}
+	</ul>
+	{% endif %}
+	{% endwith %}
+</div>

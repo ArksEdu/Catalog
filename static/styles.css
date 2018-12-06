@@ -1,0 +1,153 @@
+* {
+	font-family: "Helvetica Neue Bold", Roboto, Helvetica, Arial, sans-serif;
+	font-weight: 700;
+}
+
+h1 {
+	font-family: "Helvetica Neue Light", Roboto, Helvetica, Arial, sans-serif;
+	font-size: 50px;
+	color: #51453B;
+	line-height: 60px;
+	font-weight: 300;
+}
+
+h2 {
+	font-size: 24px;
+	color:  #3F0BCE;
+	line-height: 29px;
+}
+
+h3 {
+	font-size: 18px;
+	color: #4A4A4A;
+	line-height: 23px;
+}
+ p {
+ 	font-family: "Helvetica Neue", Roboto, Helvetica, Arial, sans-serif;
+ 	font-size: 16px;
+ 	color: #7B7573;
+ 	line-height: 24px;
+ 	font-weight: 400;
+ }
+
+ strong {
+ 	font-size: 16px;
+ 	color: #7B7573;
+ 	line-height: 24px;
+ }
+
+ a {
+ 	font-size: 14px;
+ 	color: #712BF3;
+ 	line-height: 17px;
+ }
+ .loginButton {
+	 text-align: center;
+	 padding-top: 10px;
+ }
+ .body{
+	 background-color: #aaaaaa;
+ }
+.padding-top {
+	padding-top: 30px;
+}
+.padding-bottom {
+	padding-bottom: 30px;
+}
+.form-control {
+	margin-bottom: 10px;
+}
+.margin-right {
+	margin-right: 30px;
+}
+.padding-none {
+	padding: 0;
+}
+.btn {
+	padding: 5px;
+	margin: 0;
+	border-color: #588CCF;
+	border-width: 2px;
+	color: #588CCF;;
+}
+.btn:hover {
+	border-color: #aaaaaa;
+}
+.btn.delete {
+	border-color: #aaaaaa;
+	color: #aaaaaa;
+}
+.btn.delete:hover {
+	border-color: #aaaaaa;
+	color: red;
+}
+.glyphicon {
+	margin-right: 10px;
+}
+.top-menu {
+	padding-top: 30px;
+	padding-bottom: 30px;
+	background-color: #008cff;}
+.top-menu p {
+	margin-bottom: 0;
+	line-height: 16px;
+}
+.top-menu a {
+	margin-bottom: 0;
+	line-height: 16px;
+	font-size: 16px;
+	color: #ffffff;
+	font-weight: 400;
+}
+.banner.menu {
+	background-color: #C6D7F0;
+}
+.banner.profile {
+	background-color: #A6BEEB;
+}
+.banner h1 {
+	margin: 20px 0;
+}
+ .list, .content {
+	background-color: #F0F0F0;
+	padding: 20px;
+	border-style: groove;
+	border-color: #4A4A4A;
+	border-width: 1px;
+}
+.list_item {
+	font-size: 16px;
+	font-weight: bold;
+	padding-bottom: 4px;
+	color: blue;
+}
+.list_item:hover {
+	font-size: 16px;
+	font-weight: bold;
+	padding-bottom: 4px;
+	color: #008cff;
+	text-decoration: underline;
+}
+.category-info {
+	font-size: 13px;
+	color: #a8a1a1;
+	padding-left: 4px;
+}
+.creator {
+	padding-right: 20px;
+	margin-top: -20px;
+	font-size: 14px;
+	color: #7B7573;
+	font-weight: 400;
+	text-align: right;
+	float:right;
+}
+.flash {
+	background-color: #FFF453;
+	width:100%;
+	text-decoration: none;
+}
+.flash li {
+	list-style-type: none;
+	text-align: center;
+}

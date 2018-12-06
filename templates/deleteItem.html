@@ -1,0 +1,26 @@
+{% extends "main.html" %}
+{% block content %}
+
+<div class="row banner menu">
+	<div class="col-md-11 col-md-offset-1 padding-none">
+		<h1>Delete Item</h1>
+	</div>
+</div>
+<div class="content">
+	<h2> Are you sure you want to delete {{item.title}}? </h2>
+
+	{% if 'email' in session and item.Category.user_id == session['user_id'] %}
+	<form action="#" method='post'>
+
+		<button type="submit" class="btn btn-default" id="submit" type="submit">
+			<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>Delete</button>
+		<a href="{{url_for('viewItem', title = item.title, item_id = item.id)}}" class="btn btn-default delete">
+				<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Cancel
+		</a>
+
+	</form>
+	{% else %}
+	<span>You do not have authorisation to delete this item. Please create your own item to delete.</span>
+	{% endif %}
+</div>
+{% endblock %}
