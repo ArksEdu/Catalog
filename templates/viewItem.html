@@ -9,7 +9,7 @@
 <div class="row content">
 	<div class="col-md-6 col-md-offset-1 padding-top">
 		<label for="category">Category:</label>
-		<input type="text" disabled="disabled" class="form-control" value="{{item.Category.name}}" name="category" readonly="readonly" />
+		<input type="text" disabled="disabled" class="form-control" value="{{item.category.name}}" name="category" readonly="readonly" />
 
 		<label for="title">Title:</label>
 		<input type="text" disabled="disabled" class="form-control" value="{{item.title}}" name="title" readonly="readonly" />
@@ -30,9 +30,9 @@
 			</button>
 		</a>
 		{% endif %}
-		<a href="{{url_for('showItemsForCategory', name = item.Category.name, cat_id = item.Category.id)}}">
+		<a href="{{url_for('showItemsForCategory', name = item.category.name, cat_id = item.category.id)}}">
 			<button class="btn btn-default delete" id="view-category">
-				<span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>Back to Category {{item.Category.name}} List
+				<span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>Back to Category {{item.category.name}} List
 			</button>
 		</a>
 	</div>
