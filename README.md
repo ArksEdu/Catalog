@@ -79,34 +79,48 @@ In lightsale:
 12. **GRANT SELECT, UPDATE, INSERT, DELETE ON category TO catalog;** 
 13. **GRANT SELECT, UPDATE, INSERT, DELETE ON item TO catalog;** 
 
+### Configure Apache
+1. Update /etc/hosts file - add line for "127.0.0.1 arks.catalog"
+2. cd /etc/apache2/sites-available
+3. sudo touch arks.catalog.conf
+4. sudo nano arks.catalog.conf
+5. Copy in following text and save the file:  
+   ~~~~
+   <virtualhost *:80>  
+        ServerName arks.catalog  
+    
+        WSGIDaemonProcess catalog user=www-data group=www-data threads=5 home=/var/www/Catalog/  
+        WSGIScriptAlias / /var/www/Catalog/catalog.wsgi  
+    
+        <directory /var/www/Catalog>  
+            WSGIProcessGroup catalog  
+            WSGIApplicationGroup %{GLOBAL}  
+            WSGIScriptReloading On  
+            Order deny,allow  
+            Allow from all  
+        </directory>  
+
+    </virtualhost>
+    ~~~~
+6. **sudo a2dissite 000-default.conf** - disables the default conf file from being the one used for apache
+7. **sudo a2ensite arks.catalog.conf** - enables the arks.catalog conf file as the default one for apache
+8. **sudo apache2ctl restart** - start apache
+9.  **sudo sercice apache2 restart** - restart serice also.
+
 ## Running the Catalog App
-First, to set up vagrant, use the  vagrant file from Udacity fullstack-vm. This file will need to be put into the vagrant directory o your computer.
-
-Download the project zip file into the vagrant directory. The zip should contain a single folder: "catalog". This folder will have all the files associated with the project. Unzip the project zip file in the vagrant directory. 
-
-Startup the vagrant virtual machine with **vagrant up**
-
-Once it is up and running, type **vagrant ssh**. This will log your terminal into the virtual machine, and you'll get a Linux shell prompt. When you want to log out, type **exit** at the shell prompt.  To turn the virtual machine off (without deleting anything), type **vagrant halt**. If you do this, you'll need to run **vagrant up** again before you can log into it.
-
-Now that you have Vagrant up and running type **vagrant ssh** to log into your VM.  change to the /vagrant/catalog directory by typing **cd /vagrant/catalog**. This will take you to the shared folder between your virtual machine and host machine.
-
-Type **ls** to ensure that you are inside the directory that contains application.py, database_setup.py, catalog.db, client_secrets.json and two directories named 'templates' and 'static'
-
-Now type **python3 postgres_db_setup.py** to initialize the database.
-
-Type **python3 catalog.py** to run the Flask web server. In your browser visit **http://localhost:5000** to view the catalog app.  You should be able to view, add, edit, and delete items and categories.
+Type http://<server IP:port> in web browser
 
 Some json endpoints are also provided with this project.  The main one is catalog.json, which can be found at the root.  This file returns the list of Categories and their related Items in the following format:
-    1. Level 1 - Category
-    2. Within Category the following attributes:
-        - Item - which is a list of the related Items for the Category
-        - id - the primary identifier of the Category
-        - name - the name of the Category
-    3. For each Item within a Category, the following details are provided:
-        - cat_id - the identifier of the parent category
-        - description - a description of the Item in the Category
-        - id - the primary identifier of the Item
-        - title - the title of the Item as shown in the Category Item list page
+ 1. Level 1 - Category
+ 2. Within Category the following attributes:
+     - Item - which is a list of the related Items for the Category
+     - id - the primary identifier of the Category
+     - name - the name of the Category
+ 3. For each Item within a Category, the following details are provided:
+     - cat_id - the identifier of the parent category
+     - description - a description of the Item in the Category
+     - id - the primary identifier of the Item
+     - title - the title of the Item as shown in the Category Item list page
 
 Other available endpoints are:
 - category<cat_id>.json
