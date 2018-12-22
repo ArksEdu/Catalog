@@ -59,11 +59,12 @@ In lightsale:
 11. sudo pip3 install sqlalchemy
 12. sudo pip3 install flask
 13. sudo pip3 install httplib2
-14. git clone https://github.com/google/oauth2client auth
-15. sudo python3 auth/setup.py install
-16. sudo pip3 install requests
-17. sudo pip3 install oauth2client - double check to ensure have installed this
-18. git clone https://github.com/ArksEdu/Catalog
+15. git clone https://github.com/google/oauth2client auth
+16. sudo python3 auth/setup.py install
+17. sudo pip3 install requests
+18. sudo pip3 install oauth2client - double check to ensure have installed this
+14. cd /var/www
+19. git clone https://github.com/ArksEdu/Catalog
 
 ### Configure Postgres SQL
 3. sudo su - postgres
