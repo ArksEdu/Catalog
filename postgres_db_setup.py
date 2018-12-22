@@ -56,6 +56,6 @@ class item(Base):
         return orderedDict
 
 
-engine = create_engine('postgresql+psycopg2://student:86jgs12NBA@localhost:5432/catalog')
+engine = create_engine('postgresql+psycopg2://admin:adminDB2018@localhost:5432/catalog')
 
 Base.metadata.create_all(engine)

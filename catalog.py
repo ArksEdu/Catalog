@@ -9,7 +9,7 @@ import items
 app = Flask(__name__)
 
 dbtype = 'postgresql+psycopg2'
-dbconnectstr = 'student:86jgs12NBA@localhost:5432'
+dbconnectstr = 'catalog:catalogDB1@localhost:5432'
 engine = create_engine('%s://%s/catalog' % (dbtype, dbconnectstr))
 Base.metadata.bind = engine
 
@@ -124,6 +124,6 @@ def deleteItem(item_id):
 
 if __name__ == "__main__":
     app.secret_key = 'super_secret_key'
-    app.debug = True
-    app.run(host="0.0.0.0", port=5000)
-    # app.run()
+    # app.debug = True
+    # app.run(host="0.0.0.0", port=5000)
+    app.run()
