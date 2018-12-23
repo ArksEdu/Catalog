@@ -85,7 +85,7 @@ def createItem(session, parentCategory, cat_id):
     session.add(newItem)
     session.commit()
     cat_name = parentCategory.name
-    flash('item "%s" Successfully Created for %s' % (newItem.title, cat_name))
+    flash('Successfully Created Item: "%s" for Category: %s' % (newItem.title, cat_name))
     return redirect(url_for('showItemsForCategory', cat_id=newItem.cat_id))
 
 def editItem(session, item_id):
@@ -116,7 +116,7 @@ def editItem(session, item_id):
         if request.form['description']:
             editedItem.description = request.form['description']
         session.commit()
-        flash('item Successfully Edited')
+        flash('Successfully Edited Item')
         return redirect(url_for('viewItem', item_id=item_id))
     else:
         return render_template('editItem.html', item=editedItem)
@@ -142,7 +142,7 @@ def deleteItem(session, item_id):
         cat_id = itemToDelete.cat_id
         session.delete(itemToDelete)
         session.commit()
-        flash('item Successfully Deleted')
+        flash('Successfully Deleted Item')
         return redirect(url_for('showItemsForCategory', cat_id=cat_id))
     else:
         return render_template('deleteItem.html', item=itemToDelete)

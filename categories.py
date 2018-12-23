@@ -39,7 +39,7 @@ def newCategory(session):
         newCategory = category(name=request.form['name'],
                                person_id=login_session['user_id'])
         session.add(newCategory)
-        flash('New category %s Successfully Created' % newCategory.name)
+        flash('Successfully Created New Category: %s' % newCategory.name)
         session.commit()
         return redirect(url_for('showLatestItems'))
     else:
@@ -63,7 +63,7 @@ def editCategory(session, cat_id):
             return redirect(url_for('showItemsForCategory', cat_id=cat_id))
 
         editedCategory.name = new_name
-        flash('category Successfully Edited %s' % editedCategory.name)
+        flash('Successfully Edited Category: %s' % editedCategory.name)
         session.commit()
         return redirect(url_for('showItemsForCategory', cat_id=cat_id))
     else:
@@ -85,7 +85,7 @@ def deleteCategory(session, cat_id):
             session.delete(itemToDelete)
 
         session.delete(catToDelete)
-        flash('%s Successfully Deleted' % catToDelete.name)
+        flash('Successfully Deleted Category: %s' % catToDelete.name)
         session.commit()
         return redirect(url_for('showLatestItems'))
     else:
