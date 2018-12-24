@@ -57,8 +57,10 @@ In Local Machine:
 1. ssh grader@<box ip address> -p <ssh port> -i ~/.ssh/graderKey - ssh in with grader user using generated keypair.  
   
 On the server:  
-1.   sudo nano /etc/ssh/sshd_config - edit the ssh config file to turn off password authentications for all users.  Do this by setting the "Password Authentication" option to "no"  
-2.   sudo service ssh restart - restart ssh service so all users are now forced to have a keypair.  
+1. sudo nano /etc/ssh/sshd_config - edit the ssh config file to set: 
+    - "Password Authentication" option to "no" - turns off password authentications for all users.
+    - "PermitRootLogin" option to "no" - disables both password and ssh logon for root user.
+2. sudo service ssh restart - restart ssh service so all users are now forced to have a keypair.  
   
 ### Set up firewall  
   
@@ -68,7 +70,6 @@ On the server:
 3. sudo ufw status - tell you if firewall is active or not.  If it is active, deactivate it first so can make changes without accidently restricting access with sudo ufw disable  
 4. sudo ufw default deny incoming  
 5. sudo ufw default allow outgoing  
-6. sudo ufw allow ssh  
 7. sudo ufw allow 2200/tcp  
 8. sudo ufw allow www  
 9. sudo ufw allow ntp  
@@ -145,4 +146,11 @@ In lightsail:
 6. sudo a2dissite 000-default.conf - disables the default conf file from being the one used for apache  
 7. sudo a2ensite ArksCatalog.conf - enables the ArksCatalog conf file as the default one for apache  
 8. sudo apache2ctl restart - start apache  
-9.  sudo service apache2 restart - restart serice also.  
+9. sudo service apache2 restart - restart serice also.  
+  
+  
+## References  
+The following websites were exceeding helpful with some of the main issues that occurred in attempting to set up the linux machine, and get the website working on it:  
+1. https://www.jakowicz.com/flask-apache-wsgi/ - gave great insight into how to run Flask App with swgi  
+2. https://www.a2hosting.com/kb/developer-corner/postgresql/managing-postgresql-databases-and-users-from-the-command-line - explained how to set up postgresql users, and databases, and grant permissions  
+3. https://classroom.udacity.com/nanodegrees/nd004/parts/b2de4bd4-ef07-45b1-9f49-0e51e8f1336e - Udacity Course - Lesson 2 from here was extremely useful in understanding linux security concepts  
